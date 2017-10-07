@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="nav_left">
+    <block wx:for="{{navLeftItems}}">
+      <view class="nav_left_items {{curNav == item.id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.id}}">{{item.name}}</view>
+    </block>
+  </view>
+  <view class="nav_right">
+    <view wx:if="{{navRightItems[curIndex].list}}">
+      <block wx:for="{{navRightItems[curIndex].list}}">
+        <view class="nav_right_items">
+          <navigator url="../list/index?brand={{item.id}}">
+            <view>
+              <block wx:if="{{item.url}}">
+                <image src="{{item.url}}"></image>
+              </block>
+              <block wx:else>
+                <image src="http://47.95.219.246/weGo/images/zerror.jpg"></image>
+              </block>
+            </view>
+            <view wx:if="{{item.name}}">
+              <text>{{item.name}}</text>
+            </view>
+            <view wx:else>
+              <text>   </text>
+            </view>
+          </navigator>
+        </view>
+      </block>
+    </view>
+    <view wx:else>暂无数据</view>
+  </view>
+</view>
